@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" fill="none"
+  stroke="#000" stroke-width="6">
+  <!-- Hinterer Umschlag -->
+  <g transform="rotate(8 135 55)">
+    <rect x="75" y="25" width="110" height="70" rx="3" />
+    <path d="M 75 25 L 130 65 L 185 25" />
+  </g>
+  <!-- Unterer Umschlag -->
+  <g transform="rotate(-6 110 135)">
+    <rect x="55" y="100" width="110" height="70" rx="3" />
+    <path d="M 55 100 L 110 140 L 165 100" />
+  </g>
+  <!-- Vorderer Haupt-Umschlag -->
+  <rect x="25" y="65" width="115" height="75" rx="4" fill="#fff" />
+  <path d="M 25 65 L 82 108 L 140 65" />
+</svg>
