@@ -1,6 +1,16 @@
 # Seriendruck Brief-Generator v3 – README
 
-Datei `index.html` per Doppelklick im Browser öffnen (Chrome, Edge oder Firefox). Der Quelltext liegt im Klartext in der Datei. Beim Laden wird eine Internetverbindung für die Schriften Roboto und Open Sans benötigt.
+Die Anwendung besteht aus `index.html`, `styles.css` und `app.js`. Sie benötigt zur Verarbeitung keine Internetverbindung und lädt keine externen Schriften oder sonstigen Dienste. Das Logo in `icon.svg` wird als SVG-Favicon sowie als Grundlage für die PWA-PNG-Icons verwendet.
+
+## Offline-Nutzung, PWA und GitHub Pages
+
+- Für den normalen lokalen Gebrauch kann `index.html` direkt geöffnet werden. Installation als PWA und Offline-Caching benötigen jedoch einen sicheren Ursprung: GitHub Pages (HTTPS) oder lokal `http://localhost`.
+- Zum lokalen Testen im Projektverzeichnis einen Webserver starten, z. B. `python3 -m http.server 8000`, und `http://localhost:8000` aufrufen.
+- Die erste Nutzung muss online erfolgen. Der Service Worker speichert Anwendung, Styles, JavaScript, Manifest und Icons lokal. Danach kann die App auch ohne Verbindung gestartet werden. Nutzdaten und Entwürfe bleiben im `localStorage` des Browsers und werden nicht vom Service Worker zwischengespeichert.
+- Im Browser-Menü **Installieren** bzw. **Zum Startbildschirm hinzufügen** wählen. Das Manifest enthält SVG- und PNG-Icons; das iOS-Startbild verwendet `icons/apple-touch-icon.png`.
+- Zum Veröffentlichen das Projekt in ein GitHub-Repository übertragen. Der Workflow `.github/workflows/pages.yml` veröffentlicht bei Pushes auf `main`. In **Settings → Pages → Build and deployment** als Quelle **GitHub Actions** wählen. Danach steht die Seite unter `https://<konto>.github.io/<repository>/` bereit. Bei einem anderen Deployment-Branch `main` im Workflow anpassen.
+- Für Änderungen prüft der Service Worker zuerst die Online-Version und greift bei fehlender Verbindung auf den lokalen Cache zurück. Beim ersten Online-Aufruf nach einem Deployment werden aktualisierte App-Dateien in den Cache übernommen.
+- Browserdaten einer lokalen Datei und der GitHub-Pages-Adresse sind getrennt. Bestehende Entwürfe bei Bedarf vorher über **Export** sichern und auf der veröffentlichten Seite über **Import** laden.
 
 ## Schnellstart
 
