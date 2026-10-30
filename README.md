@@ -63,7 +63,7 @@ Fett, kursiv, unterstrichen, Linksbündig, Blocksatz, Listen, Formatierung entfe
 
 ## Vorschau
 
-Auswahlfeld und ‹ › wechseln zwischen den Empfängern, „Alle" zeigt alle Briefe. Der Zoom-Regler verändert nur die Ansicht.
+Auswahlfeld und ‹ › wechseln zwischen den Empfängern, „Alle" zeigt alle Briefe. Der Zoom-Regler verändert nur die Ansicht. Am Desktop scrollen Eingaben und Vorschau unabhängig voneinander; auf schmalen Bildschirmen bleibt die Seite normal scrollbar.
 
 ## Drucken / PDF
 
