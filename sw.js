@@ -1,4 +1,4 @@
-const CACHE_NAME = 'seriendruck-shell-v2';
+const CACHE_NAME = 'seriendruck-shell-v10';
 const APP_SHELL = [
   './',
   './index.html',

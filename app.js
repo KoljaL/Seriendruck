@@ -17,9 +17,14 @@
       }
       function setTheme(dark, persist) {
         const theme = dark ? 'dark' : 'light';
+        if (persist) {
+          document.body.classList.add('theme-fade');
+          clearTimeout(setTheme.t);
+          setTheme.t = setTimeout(() => document.body.classList.remove('theme-fade'), 450);
+        }
         document.body.dataset.theme = theme;
-        $('themeToggle').checked = dark;
-        $('themeLabel').textContent = dark ? 'Dunkel' : 'Hell';
+        $('themeToggle').classList.toggle('is-dark', dark);
+        $('themeToggle').setAttribute('aria-pressed', dark);
         document.querySelector('meta[name="theme-color"]').content = dark ? '#3a254c' : '#663399';
         if (persist) {
           try {
@@ -39,7 +44,7 @@
           toast('Gespeicherter Designmodus konnte nicht geladen werden.', true);
         }
         setTheme(theme === 'dark', false);
-        $('themeToggle').addEventListener('change', (event) => setTheme(event.target.checked, true));
+        $('themeToggle').addEventListener('click', () => setTheme(document.body.dataset.theme !== 'dark', true));
       })();
 
       /* ---------- Bereinigung des Brieftexts (Allowlist) ---------- */
@@ -494,6 +499,8 @@
         logo = typeof d.logo === 'string' && /^data:image[/](png|jpeg|gif|webp);base64,[A-Za-z0-9+/=]+$/.test(d.logo) ? d.logo : null;
       }
       function save() {
+        dirty = true;
+        showStatus();
         try {
           localStorage.setItem('sbg3_auto', JSON.stringify(getState()));
         } catch (e) {
@@ -503,6 +510,7 @@
       function syncDocumentName() {
         const name = $('docName').value.trim();
         document.title = name || 'Seriendruck';
+        $('docName').style.width = Math.min(Math.max((name || $('docName').placeholder).length * 1.1 + 3, 14), 40) + 'ch';
       }
       $('docName').addEventListener('input', () => {
         syncDocumentName();
@@ -535,17 +543,76 @@
           return {};
         }
       }
-      function fillDrafts() {
-        const d = drafts();
-        $('draftSel').innerHTML =
-          '<option value="">Entwürfe…</option>' +
-          Object.keys(d)
-            .map((k) => '<option>' + esc(k) + '</option>')
-            .join('');
+      const DRAFT_DEFAULT = 'Unbenannter Entwurf';
+      let dirty = false,
+        lastSaved = null;
+      function markClean(saved) {
+        dirty = false;
+        if (saved) lastSaved = new Date();
+        showStatus();
       }
+      function showStatus() {
+        const s = $('draftStatus');
+        if (dirty) s.textContent = '● ungespeichert';
+        else if (lastSaved) s.textContent = '✓ gespeichert ' + lastSaved.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+        else s.textContent = '';
+        s.classList.toggle('dirty', dirty);
+      }
+      function fillDrafts() {
+        const list = $('draftList');
+        const names = Object.keys(drafts());
+        list.textContent = '';
+        if (!names.length) {
+          const p = document.createElement('p');
+          p.className = 'dm-empty';
+          p.textContent = 'Noch keine Entwürfe im Browser';
+          list.appendChild(p);
+          return;
+        }
+        names.forEach((n) => {
+          const row = document.createElement('div');
+          row.className = 'dm-row';
+          const open = document.createElement('button');
+          open.type = 'button';
+          open.setAttribute('role', 'menuitem');
+          open.className = 'dm-open';
+          open.textContent = n;
+          open.title = 'Entwurf „' + n + '“ öffnen';
+          open.addEventListener('click', () => draftLoad(n));
+          const del = document.createElement('button');
+          del.type = 'button';
+          del.className = 'dm-del';
+          del.title = 'Entwurf „' + n + '“ löschen';
+          del.setAttribute('aria-label', del.title);
+          del.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-trash"/></svg>';
+          del.addEventListener('click', () => draftDel(n));
+          row.append(open, del);
+          list.appendChild(row);
+        });
+      }
+      function setMenu(open) {
+        $('draftMenu').hidden = !open;
+        $('draftMenuBtn').setAttribute('aria-expanded', open);
+      }
+      $('draftMenuBtn').addEventListener('click', () => setMenu($('draftMenu').hidden));
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.draft-menu-wrap')) setMenu(false);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !$('draftMenu').hidden) {
+          setMenu(false);
+          $('draftMenuBtn').focus();
+        }
+      });
+      $('docName').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === 'Escape') e.target.blur();
+      });
+      $('docName').addEventListener('blur', () => {
+        if (!$('docName').value.trim()) $('docName').value = DRAFT_DEFAULT;
+        syncDocumentName();
+      });
       function draftSave() {
-        const n = $('docName').value.trim();
-        if (!n) return toast('Bitte Dokumentnamen eingeben', true);
+        let n = $('docName').value.trim() || DRAFT_DEFAULT;
         $('docName').value = n;
         syncDocumentName();
         const d = drafts();
@@ -554,31 +621,47 @@
         try {
           localStorage.setItem('sbg3_drafts', JSON.stringify(d));
           fillDrafts();
-          $('draftSel').value = n;
-          toast('Entwurf gespeichert');
+          markClean(true);
+          toast('Im Browser gespeichert');
         } catch (e) {
-          toast('Speicher voll. Bitte Export nutzen.', true);
+          toast('Browser-Speicher voll. Bitte als Datei sichern.', true);
         }
       }
-      function draftLoad() {
-        const n = $('draftSel').value;
-        if (!n) return toast('Bitte Entwurf wählen', true);
-        if (!confirm('Aktuelle Eingaben durch Entwurf „' + n + '“ ersetzen?')) return;
+      function draftLoad(n) {
+        setMenu(false);
+        if (dirty && !confirm('Ungespeicherte Änderungen verwerfen und „' + n + '“ öffnen?')) return;
         const d = drafts()[n];
         if (!d) return toast('Entwurf nicht gefunden', true);
-        setState({ ...d, docName: d.docName || n });
+        setState({ ...d, docName: n });
         syncDocumentName();
         upd();
-        toast('Entwurf geladen');
+        setTimeout(() => markClean(true), 600);
+        toast('Entwurf geöffnet');
       }
-      function draftDel() {
-        const n = $('draftSel').value;
-        if (!n) return;
-        if (!confirm('Entwurf „' + n + '“ löschen?')) return;
+      function draftDel(n) {
+        if (!confirm('Entwurf „' + n + '“ aus dem Browser löschen?')) return;
         const d = drafts();
         delete d[n];
         localStorage.setItem('sbg3_drafts', JSON.stringify(d));
         fillDrafts();
+      }
+      function draftExample() {
+        setMenu(false);
+        loadExample();
+      }
+      function draftNew() {
+        setMenu(false);
+        if (!confirm('Alle aktuellen Eingaben verwerfen und neu beginnen?')) return;
+        const c = window.confirm;
+        window.confirm = () => true;
+        loadExample();
+        window.confirm = c;
+        $('rec').value = '';
+        $('subj').value = '';
+        $('docName').value = DRAFT_DEFAULT;
+        lastSaved = null;
+        syncDocumentName();
+        upd();
       }
       function exportJSON() {
         const b = new Blob([JSON.stringify(getState(), null, 2)], { type: 'application/json' });
@@ -725,6 +808,7 @@
           loadExampleSilent();
         }
         syncDocumentName();
+        setTimeout(() => markClean(false), 700);
         function loadExampleSilent() {
           const c = window.confirm;
           window.confirm = () => true;

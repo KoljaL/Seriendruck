@@ -10,11 +10,11 @@ Die Anwendung besteht aus `index.html`, `styles.css` und `app.js`. Sie benötigt
 - Im Browser-Menü **Installieren** bzw. **Zum Startbildschirm hinzufügen** wählen. Das Manifest enthält SVG- und PNG-Icons; das iOS-Startbild verwendet `icons/apple-touch-icon.png`.
 - Zum Veröffentlichen das Projekt in ein GitHub-Repository übertragen. Der Workflow `.github/workflows/pages.yml` veröffentlicht bei Pushes auf `main`. In **Settings → Pages → Build and deployment** als Quelle **GitHub Actions** wählen. Danach steht die Seite unter `https://<konto>.github.io/<repository>/` bereit. Bei einem anderen Deployment-Branch `main` im Workflow anpassen.
 - Für Änderungen prüft der Service Worker zuerst die Online-Version und greift bei fehlender Verbindung auf den lokalen Cache zurück. Beim ersten Online-Aufruf nach einem Deployment werden aktualisierte App-Dateien in den Cache übernommen.
-- Browserdaten einer lokalen Datei und der GitHub-Pages-Adresse sind getrennt. Bestehende Entwürfe bei Bedarf vorher über **Export** sichern und auf der veröffentlichten Seite über **Import** laden.
+- Browserdaten einer lokalen Datei und der GitHub-Pages-Adresse sind getrennt. Bestehende Entwürfe bei Bedarf vorher über **Datei › Sichern** sichern und auf der veröffentlichten Seite über **Datei › Öffnen** laden.
 
 ## Schnellstart
 
-1. **Beispiel** klicken und die Vorschau ansehen.
+1. Im Header **Entwürfe › Beispiel-Brief** wählen und die Vorschau ansehen.
 2. Eigene Empfängerdaten einfügen oder per **CSV / TXT laden…** importieren.
 3. Texte anpassen, Vorschau prüfen, **Drucken / PDF** wählen.
 
@@ -73,7 +73,7 @@ Im Druckdialog: **A4**, **Ränder: Keine**, **Skalierung 100 %**, **Kopf- und Fu
 
 - Alle Eingaben einschließlich der gewählten Layout-Vorlage und des Monogramms werden automatisch im Browser gesichert (Meldung bei Fehlern).
 - Der Hell-/Dunkelmodus wird über den Schalter in der Kopfzeile umgestellt und unabhängig von Entwürfen im Browser gespeichert. Briefvorschau und Druck bleiben hell.
-- Der **Dokumentname** oben im Header wird für den Seitentitel, den Namen des PDF-Druckvorschlags und den JSON-Export verwendet.
-- **Speichern / Laden / Löschen:** Der Dokumentname ist zugleich der Name des benannten Entwurfs im Browser. Für einen weiteren Entwurf zuerst den Namen oben ändern und dann speichern.
-- **Export / Import:** JSON-Datei, die einzig verlässliche Sicherung (z. B. bei Browserwechsel oder Umbenennen der Datei). Der Export erhält den Dokumentnamen; bei älteren Importdateien ohne Namensfeld wird der Dateiname übernommen. Importierte Texte werden bereinigt. Ältere Entwürfe/Exporte ohne Layoutangabe laden mit *Geschäftsbrief* und ohne Monogramm.
-- Vor jedem Überschreiben (Beispiel, Import, Entwurf laden, CSV) kommt eine Rückfrage.
+- Der **Entwurfsname** oben im Header wird für den Seitentitel, den Namen des PDF-Druckvorschlags und den JSON-Export verwendet.
+- **Browser (Speichern, Entwürfe):** Der Entwurfsname (Klick auf den Titel zum Umbenennen) ist zugleich Dateiname für Export und PDF. **Speichern** legt den Entwurf im Browser ab, im Menü **Entwürfe** werden Entwürfe geöffnet, gelöscht oder ein neuer begonnen. Daneben zeigt eine Statusanzeige, ob Änderungen noch nicht gespeichert sind.
+- **Datei (Sichern / Öffnen):** JSON-Datei auf der Festplatte, die einzig verlässliche Sicherung (z. B. bei Browserwechsel oder Umbenennen der Datei). Der Export erhält den Dokumentnamen; bei älteren Importdateien ohne Namensfeld wird der Dateiname übernommen. Importierte Texte werden bereinigt. Ältere Entwürfe/Exporte ohne Layoutangabe laden mit *Geschäftsbrief* und ohne Monogramm.
+- Vor jedem Überschreiben (Beispiel, Datei öffnen, Entwurf laden, CSV) kommt eine Rückfrage.

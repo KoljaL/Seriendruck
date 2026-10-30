@@ -58,10 +58,59 @@
         gap: 8px 12px;
         align-items: center;
       }
-      header h1 {
-        font: 700 17px Arial, sans-serif;
+      header .brand {
         margin: 0 auto 0 0;
-        letter-spacing: 0.3px;
+        display: flex;
+        color: #fff;
+      }
+      header .brand svg {
+        display: block;
+        height: 44px;
+        width: auto;
+        overflow: visible;
+      }
+      .logo .env {
+        transform-box: view-box;
+        transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1);
+        animation: env-in 0.7s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
+      }
+      .logo .env-back {
+        transform-origin: 135px 55px;
+        transform: rotate(8deg);
+        animation-delay: 0.05s;
+      }
+      .logo .env-mid {
+        transform-origin: 110px 135px;
+        transform: rotate(-6deg);
+        animation-delay: 0.15s;
+      }
+      .logo .env-front {
+        fill: var(--acc2);
+        animation-delay: 0.25s;
+      }
+      .brand:hover .env-back,
+      .brand:focus-visible .env-back {
+        transform: translate(10px, -8px) rotate(15deg);
+      }
+      .brand:hover .env-mid,
+      .brand:focus-visible .env-mid {
+        transform: translate(4px, 8px) rotate(-13deg);
+      }
+      .brand:hover .env-front,
+      .brand:focus-visible .env-front {
+        transform: translate(-4px, 0);
+      }
+      @keyframes env-in {
+        from {
+          opacity: 0;
+          transform: translate(-30px, 0) rotate(0deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .logo .env {
+          animation: none;
+          transition: none;
+        }
       }
       .header-group {
         display: flex;
@@ -69,62 +118,213 @@
         gap: 5px;
         align-items: center;
       }
-      header #docName {
-        width: clamp(150px, 22vw, 260px);
-        background: var(--control);
-        color: var(--ink);
+      .ico {
+        width: 16px;
+        height: 16px;
+        flex: none;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
-      header #draftSel {
-        width: auto;
-        max-width: 180px;
-      }
-      .theme-switch {
+      button:has(> .ico) {
         display: inline-flex;
         align-items: center;
-        gap: 7px;
-        margin: 0 0 0 auto;
-        color: #fff;
-        cursor: pointer;
-        font-size: 12px;
-        font-weight: 600;
-        white-space: nowrap;
+        gap: 6px;
       }
-      .theme-switch input {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        opacity: 0;
-      }
-      .switch-track {
-        width: 34px;
-        height: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        border-radius: 99px;
-        background: rgba(255, 255, 255, 0.18);
+      .doc-title {
         position: relative;
-        transition: background-color 0.18s ease;
+        display: flex;
+        align-items: center;
       }
-      .switch-track::after {
-        content: '';
+      header #docName {
+        background: transparent;
+        border-color: transparent;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 4px 26px 4px 6px;
+        text-overflow: ellipsis;
+        min-width: 0;
+        max-width: 42vw;
+      }
+      header #docName::placeholder {
+        color: rgba(255, 255, 255, 0.65);
+      }
+      header #docName:hover {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      header #docName:focus {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+      .doc-edit {
         position: absolute;
-        top: 2px;
-        left: 2px;
+        right: 7px;
+        opacity: 0.6;
+        pointer-events: none;
         width: 14px;
         height: 14px;
-        border-radius: 50%;
-        background: #fff;
-        transition: transform 0.18s ease;
       }
-      .theme-switch input:checked + .switch-track {
-        background: var(--acc2);
+      #docName:focus + .doc-edit {
+        opacity: 0;
       }
-      .theme-switch input:checked + .switch-track::after {
-        transform: translateX(14px);
-        background: #211d25;
+      .draft-status {
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0.85;
       }
-      .theme-switch input:focus-visible + .switch-track {
+      .draft-status.dirty {
+        color: #f3d38a;
+        opacity: 1;
+      }
+      .chev {
+        width: 14px;
+        height: 14px;
+        margin-right: -2px;
+      }
+      .draft-menu-wrap {
+        position: relative;
+      }
+      .draft-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        z-index: 20;
+        min-width: 240px;
+        max-width: min(320px, 90vw);
+        max-height: 60vh;
+        overflow: auto;
+        padding: 6px;
+        background: var(--card);
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+      .draft-menu[hidden] {
+        display: none;
+      }
+      header .draft-menu button {
+        background: transparent;
+        color: var(--ink);
+        border-color: transparent;
+        text-align: left;
+      }
+      header .draft-menu button:hover {
+        background: var(--hover);
+      }
+      .draft-menu .dm-act,
+      .draft-menu .dm-open {
+        width: 100%;
+      }
+      .dm-sep {
+        height: 1px;
+        background: var(--line);
+        margin: 6px 2px;
+      }
+      .dm-row {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+      }
+      .dm-open {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      header .draft-menu .dm-del {
+        flex: none;
+        padding: 6px;
+        color: var(--mute);
+      }
+      header .draft-menu .dm-del:hover {
+        color: #d64545;
+      }
+      .dm-empty {
+        margin: 6px 8px;
+        font-size: 12px;
+        color: var(--mute);
+      }
+      body.theme-fade,
+      body.theme-fade *,
+      body.theme-fade *::before,
+      body.theme-fade *::after {
+        transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, fill 0.35s ease, stroke 0.35s ease !important;
+      }
+      body.theme-fade .theme-toggle #moon-cutout,
+      body.theme-fade .theme-toggle .moon-shape,
+      body.theme-fade .theme-toggle .sun-beams {
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease !important;
+      }
+      .store-group {
+        padding: 3px 5px 3px 9px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 8px;
+      }
+      .group-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.8;
+        margin-right: 3px;
+      }
+      header .theme-toggle {
+        background: none;
+        border: none;
+        padding: 4px;
+        margin: 0;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        border-radius: 8px;
+      }
+      header .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .theme-toggle:focus-visible {
         outline: 3px solid #fff;
-        outline-offset: 3px;
+        outline-offset: 2px;
+      }
+      .theme-toggle svg {
+        display: block;
+        width: 32px;
+        height: 32px;
+        overflow: visible;
+      }
+      .theme-toggle #moon-cutout {
+        transform: translate(14px, -14px);
+        transform-box: view-box;
+        transform-origin: 16px 16px;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .theme-toggle .moon-shape {
+        transform-box: view-box;
+        transform-origin: 16px 16px;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .theme-toggle .sun-beams {
+        transform-origin: 16px 16px;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      }
+      .theme-toggle.is-dark #moon-cutout {
+        transform: translate(5px, 0);
+      }
+      .theme-toggle.is-dark .moon-shape {
+        transform: rotate(-30deg);
+      }
+      .theme-toggle.is-dark .sun-beams {
+        transform: scale(0) rotate(90deg);
+        opacity: 0;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .theme-toggle * {
+          transition-duration: 0.01ms !important;
+        }
       }
       button,
       select,
@@ -582,9 +782,11 @@
           padding: 8px 10px;
           gap: 7px;
         }
-        header h1 {
-          width: 100%;
-          margin: 0;
+        header .brand {
+          margin-right: auto;
+        }
+        .store-group {
+          flex: 1 1 100%;
         }
         .document-group {
           flex: 1 1 100%;
@@ -592,9 +794,6 @@
         header #docName {
           flex: 1;
           min-width: 0;
-        }
-        .theme-switch {
-          margin-left: auto;
         }
         main {
           padding: 10px;
