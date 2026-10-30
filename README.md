@@ -72,6 +72,7 @@ Im Druckdialog: **A4**, **Ränder: Keine**, **Skalierung 100 %**, **Kopf- und Fu
 ## Speichern
 
 - Alle Eingaben einschließlich der gewählten Layout-Vorlage und des Monogramms werden automatisch im Browser gesichert (Meldung bei Fehlern).
+- Der Hell-/Dunkelmodus wird über den Schalter in der Kopfzeile umgestellt und unabhängig von Entwürfen im Browser gespeichert. Briefvorschau und Druck bleiben hell.
 - Der **Dokumentname** oben im Header wird für den Seitentitel, den Namen des PDF-Druckvorschlags und den JSON-Export verwendet.
 - **Speichern / Laden / Löschen:** Der Dokumentname ist zugleich der Name des benannten Entwurfs im Browser. Für einen weiteren Entwurf zuerst den Namen oben ändern und dann speichern.
 - **Export / Import:** JSON-Datei, die einzig verlässliche Sicherung (z. B. bei Browserwechsel oder Umbenennen der Datei). Der Export erhält den Dokumentnamen; bei älteren Importdateien ohne Namensfeld wird der Dateiname übernommen. Importierte Texte werden bereinigt. Ältere Entwürfe/Exporte ohne Layoutangabe laden mit *Geschäftsbrief* und ohne Monogramm.

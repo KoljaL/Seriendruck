@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1f4d3a" />
+    <meta name="theme-color" content="#663399" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'" />
     <title>Seriendruck Brief-Generator v3</title>
     <link rel="icon" type="image/svg+xml" href="icon.svg" />
@@ -14,12 +14,23 @@
   <body>
     <header>
       <h1>Seriendruck</h1>
-      <input type="text" id="docName" aria-label="Dokumentname" title="Dokumentname für Entwurf, Export und PDF" />
-      <select id="draftSel" title="Entwürfe" style="width: auto; max-width: 180px"></select>
-      <button onclick="draftLoad()">Laden</button><button onclick="draftSave()">Speichern</button><button onclick="draftDel()">Löschen</button>
-      <button onclick="exportJSON()">Export</button>
-      <button onclick="$('jin').click()">Import</button><input type="file" id="jin" accept=".json" hidden onchange="importJSON(event)" />
-      <button onclick="loadExample()">Beispiel</button>
+      <div class="header-group document-group">
+        <input type="text" id="docName" aria-label="Dokumentname" title="Dokumentname für Entwurf, Export und PDF" />
+        <select id="draftSel" title="Entwürfe" aria-label="Entwurf auswählen"></select>
+      </div>
+      <div class="header-group">
+        <button onclick="draftLoad()">Laden</button><button onclick="draftSave()">Speichern</button><button onclick="draftDel()">Löschen</button>
+      </div>
+      <div class="header-group">
+        <button onclick="exportJSON()">Export</button>
+        <button onclick="$('jin').click()">Import</button><input type="file" id="jin" accept=".json" hidden onchange="importJSON(event)" />
+        <button onclick="loadExample()">Beispiel</button>
+      </div>
+      <label class="theme-switch">
+        <input type="checkbox" id="themeToggle" role="switch" aria-label="Dunkelmodus" />
+        <span class="switch-track" aria-hidden="true"></span>
+        <span id="themeLabel">Hell</span>
+      </label>
       <button class="go" onclick="doPrint()">Drucken / PDF</button>
     </header>
     <main>
@@ -99,7 +110,7 @@
             <button onmousedown="event.preventDefault()" onclick="cmd('insertUnorderedList')">• Liste</button>
             <button onmousedown="event.preventDefault()" onclick="cmd('insertOrderedList')">1. Liste</button>
             <button onmousedown="event.preventDefault()" onclick="cmd('removeFormat')">Tx</button>
-            <button onmousedown="event.preventDefault()" onclick="pbreak()" style="color: var(--acc2)">+ Seitenumbruch</button>
+            <button onmousedown="event.preventDefault()" onclick="pbreak()" class="accent-text">+ Seitenumbruch</button>
           </div>
           <div id="ed" contenteditable="true"></div>
           <p class="hint">Platzhalter per Klick einfügen: siehe Chips oben. Gilt in allen Textfeldern.</p>

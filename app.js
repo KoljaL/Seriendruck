@@ -15,6 +15,32 @@
         clearTimeout(t._t);
         t._t = setTimeout(() => (t.className = ''), 2600);
       }
+      function setTheme(dark, persist) {
+        const theme = dark ? 'dark' : 'light';
+        document.body.dataset.theme = theme;
+        $('themeToggle').checked = dark;
+        $('themeLabel').textContent = dark ? 'Dunkel' : 'Hell';
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#3a254c' : '#663399';
+        if (persist) {
+          try {
+            localStorage.setItem('sbg3_theme', theme);
+          } catch (error) {
+            console.error('Designmodus konnte nicht gespeichert werden:', error);
+            toast('Designmodus konnte nicht gespeichert werden.', true);
+          }
+        }
+      }
+      (function initTheme() {
+        let theme = 'light';
+        try {
+          theme = localStorage.getItem('sbg3_theme') === 'dark' ? 'dark' : 'light';
+        } catch (error) {
+          console.error('Gespeicherter Designmodus konnte nicht geladen werden:', error);
+          toast('Gespeicherter Designmodus konnte nicht geladen werden.', true);
+        }
+        setTheme(theme === 'dark', false);
+        $('themeToggle').addEventListener('change', (event) => setTheme(event.target.checked, true));
+      })();
 
       /* ---------- Bereinigung des Brieftexts (Allowlist) ---------- */
       const OK = new Set(['P', 'DIV', 'BR', 'B', 'STRONG', 'I', 'EM', 'U', 'UL', 'OL', 'LI', 'HR']);
