@@ -39,7 +39,7 @@ Ein Klick auf einen Chip fügt den Platzhalter in das zuletzt bearbeitete Feld e
 
 **Absender:** Zeile 1 ist die Rücksendezeile (über der Empfängeradresse), die weiteren Zeilen sind die vollständige Absenderadresse (bei nur einer Zeile wird diese verwendet). Unter *Absenderadresse anzeigen* wählst du, wo sie erscheint: **Briefkopf** (oben links, Standard), **Informationsblock** (rechts, oberhalb der Infozeilen), **Fußzeile** oder gar nicht.
 
-Jede Option ist ein-/ausschaltbar: Rücksendezeile, Vermerk (z. B. „Einschreiben"), Datum (automatisch „heute"; das Feld ist dann gesperrt – für eine Handeingabe die Automatik ausschalten), Informationsblock (Zeilen im Format `Bezeichnung: Wert`), Datum und Brief-ID im Informationsblock, Logo. **Die Brief-ID ist standardmäßig aus.** Präfix und Startnummer sind einstellbar. Logos werden beim Laden automatisch verkleinert.
+Jede Option ist ein-/ausschaltbar: Rücksendezeile, Vermerk (z. B. „Einschreiben"), Datum (automatisch „heute"; das Feld ist dann gesperrt – für eine Handeingabe die Automatik ausschalten), Informationsblock (Zeilen im Format `Bezeichnung: Wert`), Datum und Brief-ID im Informationsblock, Logo. **Die Brief-ID ist standardmäßig aus.** Präfix und Startnummer sind einstellbar. Logos werden beim Laden automatisch verkleinert; Breite, Höhe sowie Abstand zum oberen und rechten Seitenrand lassen sich in Millimetern einstellen. Diese Werte werden in gespeicherten Entwürfen und JSON-Dateien mitgesichert.
 
 ## 3 · Brieftext
 

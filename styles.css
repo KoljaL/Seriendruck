@@ -710,9 +710,6 @@
         width: 86mm;
         text-align: center;
       }
-      .lay-center .logo {
-        max-width: 40mm;
-      }
       .rule {
         left: 20mm;
         right: 20mm;
@@ -738,10 +735,7 @@
         left: 20mm;
       }
       .logo {
-        right: 20mm;
-        top: 10mm;
-        max-height: 20mm;
-        max-width: 60mm;
+        object-fit: contain;
       }
       .empty {
         padding: 30px;

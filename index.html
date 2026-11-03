@@ -12,22 +12,49 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position: absolute" aria-hidden="true">
       <defs>
-        <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l4 4v14H5z"/><path d="M8 3v5h7V3"/><path d="M8 21v-7h8v7"/></symbol>
-        <symbol id="i-drafts" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></symbol>
-        <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
-        <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></symbol>
-        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-        <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></symbol>
-        <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/><path d="M10 11v5M14 11v5"/></symbol>
-        <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></symbol>
-        <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V5h6l2 2h10v3"/><path d="M3 7v12h16l2-9H6z"/></symbol>
-        <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></symbol>
-        <symbol id="i-alignleft" viewBox="0 0 24 24"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></symbol>
-        <symbol id="i-justify" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></symbol>
-        <symbol id="i-prev" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
-        <symbol id="i-next" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+        <symbol id="i-save" viewBox="0 0 24 24">
+          <path d="M5 3h11l4 4v14H5z" />
+          <path d="M8 3v5h7V3" />
+          <path d="M8 21v-7h8v7" />
+        </symbol>
+        <symbol id="i-drafts" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="16" rx="2" />
+          <path d="M3 9h18" />
+          <path d="M7 6.5h.01M10 6.5h.01" />
+        </symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol>
+        <symbol id="i-pencil" viewBox="0 0 24 24">
+          <path d="M4 20h4L19 9l-4-4L4 16z" />
+          <path d="m13.5 6.5 4 4" />
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z" /></symbol>
+        <symbol id="i-trash" viewBox="0 0 24 24">
+          <path d="M4 7h16" />
+          <path d="M9 7V4h6v3" />
+          <path d="M6 7l1 13h10l1-13" />
+          <path d="M10 11v5M14 11v5" />
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24">
+          <path d="M12 4v11" />
+          <path d="m7 11 5 5 5-5" />
+          <path d="M5 20h14" />
+        </symbol>
+        <symbol id="i-folder" viewBox="0 0 24 24">
+          <path d="M3 7V5h6l2 2h10v3" />
+          <path d="M3 7v12h16l2-9H6z" />
+        </symbol>
+        <symbol id="i-print" viewBox="0 0 24 24">
+          <path d="M7 9V3h10v6" />
+          <rect x="3" y="9" width="18" height="8" rx="2" />
+          <path d="M7 14h10v7H7z" />
+        </symbol>
+        <symbol id="i-alignleft" viewBox="0 0 24 24"><path d="M4 6h16M4 10h10M4 14h16M4 18h10" /></symbol>
+        <symbol id="i-justify" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16" /></symbol>
+        <symbol id="i-prev" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6" /></symbol>
+        <symbol id="i-next" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" /></symbol>
       </defs>
     </svg>
     <header>
@@ -50,18 +77,26 @@
       <div class="header-group document-group">
         <div class="doc-title">
           <input type="text" id="docName" placeholder="Unbenannter Entwurf" aria-label="Name des Entwurfs" title="Name des Entwurfs – auch Dateiname für Export und PDF" autocomplete="off" />
-          <svg class="ico doc-edit" aria-hidden="true"><use href="#i-pencil"/></svg>
+          <svg class="ico doc-edit" aria-hidden="true"><use href="#i-pencil" /></svg>
         </div>
         <span id="draftStatus" class="draft-status" role="status"></span>
       </div>
       <div class="header-group store-group" role="group" aria-label="Im Browser gespeichert">
         <span class="group-label" title="Entwürfe liegen nur in diesem Browser">Browser</span>
-        <button onclick="draftSave()" title="Entwurf im Browser speichern"><svg class="ico" aria-hidden="true"><use href="#i-save"/></svg>Speichern</button>
+        <button onclick="draftSave()" title="Entwurf im Browser speichern">
+          <svg class="ico" aria-hidden="true"><use href="#i-save" /></svg>Speichern
+        </button>
         <div class="draft-menu-wrap">
-          <button id="draftMenuBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="draftMenu" title="Gespeicherte Entwürfe"><svg class="ico" aria-hidden="true"><use href="#i-drafts"/></svg>Entwürfe<svg class="ico chev" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          <button id="draftMenuBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="draftMenu" title="Gespeicherte Entwürfe">
+            <svg class="ico" aria-hidden="true"><use href="#i-drafts" /></svg>Entwürfe<svg class="ico chev" aria-hidden="true"><use href="#i-chevron" /></svg>
+          </button>
           <div id="draftMenu" class="draft-menu" role="menu" hidden>
-            <button type="button" role="menuitem" class="dm-act" onclick="draftNew()"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>Neuer Entwurf</button>
-            <button type="button" role="menuitem" class="dm-act" onclick="draftExample()"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg>Beispiel-Brief</button>
+            <button type="button" role="menuitem" class="dm-act" onclick="draftNew()">
+              <svg class="ico" aria-hidden="true"><use href="#i-plus" /></svg>Neuer Entwurf
+            </button>
+            <button type="button" role="menuitem" class="dm-act" onclick="draftExample()">
+              <svg class="ico" aria-hidden="true"><use href="#i-star" /></svg>Beispiel-Brief
+            </button>
             <div class="dm-sep"></div>
             <div id="draftList"></div>
           </div>
@@ -69,10 +104,16 @@
       </div>
       <div class="header-group store-group" role="group" aria-label="Datei auf der Festplatte">
         <span class="group-label" title="JSON-Dateien auf deiner Festplatte">Datei</span>
-        <button onclick="exportJSON()" title="Als .json-Datei auf der Festplatte sichern"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>Sichern</button>
-        <button onclick="$('jin').click()" title=".json-Datei von der Festplatte öffnen"><svg class="ico" aria-hidden="true"><use href="#i-folder"/></svg>Öffnen</button><input type="file" id="jin" accept=".json" hidden onchange="importJSON(event)" />
+        <button onclick="exportJSON()" title="Als .json-Datei auf der Festplatte sichern">
+          <svg class="ico" aria-hidden="true"><use href="#i-download" /></svg>Sichern
+        </button>
+        <button onclick="$('jin').click()" title=".json-Datei von der Festplatte öffnen">
+          <svg class="ico" aria-hidden="true"><use href="#i-folder" /></svg>Öffnen</button
+        ><input type="file" id="jin" accept=".json" hidden onchange="importJSON(event)" />
       </div>
-      <button class="go" onclick="doPrint()" title="Alle Briefe drucken oder als PDF speichern"><svg class="ico" aria-hidden="true"><use href="#i-print"/></svg>Drucken / PDF</button>
+      <button class="go" onclick="doPrint()" title="Alle Briefe drucken oder als PDF speichern">
+        <svg class="ico" aria-hidden="true"><use href="#i-print" /></svg>Drucken / PDF
+      </button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Dunkelmodus" aria-pressed="false" title="Hell / Dunkel">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
           <mask id="theme-toggle-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
@@ -82,8 +123,14 @@
           </mask>
           <g class="moon-shape" mask="url(#theme-toggle-mask)"><circle cx="16" cy="16" r="8.5" /></g>
           <g class="sun-beams" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <path d="M16 4.5v-3" /><path d="M16 30.5v-3" /><path d="M1.5 16h3" /><path d="M27.5 16h3" />
-            <path d="m23.4 8.6 2.5-2.5" /><path d="m6 26 2.5-2.5" /><path d="m6 6 2.5 2.5" /><path d="m23.4 23.4 2.5 2.5" />
+            <path d="M16 4.5v-3" />
+            <path d="M16 30.5v-3" />
+            <path d="M1.5 16h3" />
+            <path d="M27.5 16h3" />
+            <path d="m23.4 8.6 2.5-2.5" />
+            <path d="m6 26 2.5-2.5" />
+            <path d="m6 6 2.5 2.5" />
+            <path d="m23.4 23.4 2.5 2.5" />
           </g>
         </svg>
       </button>
@@ -151,6 +198,14 @@
               Logo entfernen
             </button>
           </div>
+          <div class="row">
+            <div><label for="logoW">Breite (mm)</label><input type="number" id="logoW" min="1" max="170" step="1" value="60" data-k /></div>
+            <div><label for="logoH">Höhe (mm)</label><input type="number" id="logoH" min="1" max="280" step="1" value="20" data-k /></div>
+          </div>
+          <div class="row">
+            <div><label for="logoTop">Abstand oben (mm)</label><input type="number" id="logoTop" min="0" max="280" step="1" value="10" data-k /></div>
+            <div><label for="logoRight">Abstand rechts (mm)</label><input type="number" id="logoRight" min="0" max="190" step="1" value="20" data-k /></div>
+          </div>
           <input type="file" id="logoIn" accept="image/*" hidden onchange="loadLogo(event)" />
         </details>
 
@@ -160,8 +215,12 @@
             <button onmousedown="event.preventDefault()" onclick="cmd('bold')"><b>B</b></button>
             <button onmousedown="event.preventDefault()" onclick="cmd('italic')"><i>I</i></button>
             <button onmousedown="event.preventDefault()" onclick="cmd('underline')"><u>U</u></button>
-            <button onmousedown="event.preventDefault()" onclick="cmd('justifyLeft')" title="Linksbündig" aria-label="Linksbündig"><svg class="ico" aria-hidden="true"><use href="#i-alignleft"/></svg></button>
-            <button onmousedown="event.preventDefault()" onclick="cmd('justifyFull')" title="Blocksatz" aria-label="Blocksatz"><svg class="ico" aria-hidden="true"><use href="#i-justify"/></svg></button>
+            <button onmousedown="event.preventDefault()" onclick="cmd('justifyLeft')" title="Linksbündig" aria-label="Linksbündig">
+              <svg class="ico" aria-hidden="true"><use href="#i-alignleft" /></svg>
+            </button>
+            <button onmousedown="event.preventDefault()" onclick="cmd('justifyFull')" title="Blocksatz" aria-label="Blocksatz">
+              <svg class="ico" aria-hidden="true"><use href="#i-justify" /></svg>
+            </button>
             <button onmousedown="event.preventDefault()" onclick="cmd('insertUnorderedList')">• Liste</button>
             <button onmousedown="event.preventDefault()" onclick="cmd('insertOrderedList')">1. Liste</button>
             <button onmousedown="event.preventDefault()" onclick="cmd('removeFormat')">Tx</button>
@@ -175,7 +234,7 @@
           <textarea id="att" rows="2" data-k placeholder="Anlagen: …"></textarea>
         </details>
 
-        <details>
+        <details open>
           <summary>4 · Layout &amp; Ausgabe</summary>
           <label>Layout-Vorlage (ändert nur das Aussehen, nicht die Inhalte)</label>
           <select id="layout" data-k>
@@ -241,7 +300,11 @@
         <div id="bar">
           <b>Vorschau</b>
           <select id="sel" onchange="render()"></select>
-          <button onclick="step(-1)" title="Vorheriger Brief" aria-label="Vorheriger Brief"><svg class="ico" aria-hidden="true"><use href="#i-prev"/></svg></button><button onclick="step(1)" title="Nächster Brief" aria-label="Nächster Brief"><svg class="ico" aria-hidden="true"><use href="#i-next"/></svg></button>
+          <button onclick="step(-1)" title="Vorheriger Brief" aria-label="Vorheriger Brief">
+            <svg class="ico" aria-hidden="true"><use href="#i-prev" /></svg></button
+          ><button onclick="step(1)" title="Nächster Brief" aria-label="Nächster Brief">
+            <svg class="ico" aria-hidden="true"><use href="#i-next" /></svg>
+          </button>
           <label class="cb" style="margin: 0 0 0 auto">Zoom <input type="range" id="zoom" min="40" max="130" value="80" oninput="zoomIt()" style="width: 110px" /></label>
           <span id="pgInfo" class="hint"></span>
         </div>
